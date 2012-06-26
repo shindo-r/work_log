@@ -14,9 +14,10 @@
   <script src="lib/application.js" type="text/javascript" charset="utf-8"></script>
 
   <script type="text/x-jquery-tmpl" id="itemTemplate">
-    <div class="view"
-      <span>${task}</span> 
-      <span>${hour}</span> 
+    <div class="item">
+      <a class="destroy"></a>
+      <span class="task">${task}</span> 
+      <span class="hour">(${hour})</span>
     </div>
   </script>
 </head>

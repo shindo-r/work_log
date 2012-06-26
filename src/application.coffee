@@ -6,9 +6,19 @@ class WorkLog extends Spine.Model
 
 
 class Item extends Spine.Controller
+  events:
+    "click .destroy": "remove"
+  
+  constructor: ->
+    super
+    @instance.bind("destroy", @release)
+
   render: =>
     @replace($("#itemTemplate").tmpl(@instance))
   
+  remove: =>
+    @instance.destroy()
+
 
 class TaskApp extends Spine.Controller
   events:
@@ -23,6 +33,7 @@ class TaskApp extends Spine.Controller
   constructor: ->
     super
     WorkLog.bind("create",  @addOne) #Task.createが実行された時に、addOneを呼ぶ。
+    WorkLog.bind("refresh", @addAll)
     WorkLog.fetch() #何の意味が有る？
   
   addOne: (work_log) =>

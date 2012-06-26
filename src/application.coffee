@@ -4,7 +4,6 @@ class WorkLog extends Spine.Model
   @configure "WorkLog", "task", "hour"
   @extend Spine.Model.Local
 
-
 class Item extends Spine.Controller
   events:
     "click .destroy": "remove"
@@ -31,8 +30,8 @@ class WorkLogApp extends Spine.Controller
   constructor: ->
     super
     WorkLog.bind("save",  @addOne) #Task.createが実行された時に、addOneを呼ぶ。
-    WorkLog.bind("refresh", @addAll)
-    WorkLog.fetch() #何の意味が有る？
+    WorkLog.bind("refresh", @addAll) #refeshはfetchのタイミングで呼ばれる。詳しくはlocal.coffeeを見よ
+    WorkLog.fetch() #データをローカルストレージからロードしている。詳しくはlocal.coffeeを見よ
   
   addOne: (work_log) =>
     view = new Item(instance: work_log)

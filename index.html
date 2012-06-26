@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+<head>
+  <title>Work Log</title>
+  
+  <link rel="stylesheet" href="css/application.css" type="text/css" charset="utf-8">
+
+  <script src="lib/json2.js" type="text/javascript" charset="utf-8"></script>
+  <script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="lib/jquery.tmpl.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script src="lib/spine.js" type="text/javascript" charset="utf-8"></script>
+  <script src="lib/local.js" type="text/javascript" charset="utf-8"></script>
+  <script src="lib/application.js" type="text/javascript" charset="utf-8"></script>
+
+  <script type="text/x-jquery-tmpl" id="itemTemplate">
+    <div class="view"
+      <span>${task}</span> 
+      <span>${hour}</span> 
+    </div>
+  </script>
+</head>
+<body>
+  <div id="views">
+    <div id="work_logs">
+      <h1>Work Log</h1>
+      
+      <form id="entry_log">
+        <input name="task" type="text" placeholder="Input task name">
+        <input name="hour" type="text" placeholder="Input hour.">
+      </form>
+      
+      <div class="items"></div>
+      
+    </div>
+  </div>
+</body>
+</html>

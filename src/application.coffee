@@ -20,19 +20,17 @@ class Item extends Spine.Controller
     @instance.destroy()
 
 
-class TaskApp extends Spine.Controller
+class WorkLogApp extends Spine.Controller
   events:
-    "keypress input[name='task']":   "create"
-    "keypress input[name='hour']":   "create"
+    "keypress form input":   "create"
 
   elements:
     ".items":     "items" #こうしておくと@itemsで参照可
-    "form input[name='task']": "entry_task"
-    "form input[name='hour']": "entry_hour"
+    "form#entry_log": "form"
 
   constructor: ->
     super
-    WorkLog.bind("create",  @addOne) #Task.createが実行された時に、addOneを呼ぶ。
+    WorkLog.bind("save",  @addOne) #Task.createが実行された時に、addOneを呼ぶ。
     WorkLog.bind("refresh", @addAll)
     WorkLog.fetch() #何の意味が有る？
   
@@ -44,13 +42,21 @@ class TaskApp extends Spine.Controller
     WorkLog.each(@addOne)
 
   create: (e) -> #eはjavascriptのイベントオブジェクト
-    if (e.keyCode == 13)
-      e.preventDefault() #submitをキャンセル？
-      WorkLog.create( task:@entry_task.val(), hour:@entry_hour.val())
-      @entry_task.val("")
-      @entry_hour.val("")  
+    if press_enter_key(e)
+      e.preventDefault() #submitをキャンセル
+      WorkLog.fromForm(@form).save()
+      clear(@form)
 
 $ -> #JQueryの構文 ページのドムを構築後に、関数を実行する
-  new TaskApp(el: "#work_logs") #elをしているする事でそこのDOMを操作できる(?)
+  new WorkLogApp(el: "#work_logs") #elをしているする事でそこのDOMを操作できる(?)
 
+# 以下、ユーティリティメソッド
+
+clear = (form)->
+  form.find('input').each -> 
+    $(this).val('')
+  $(form.find('input')[0]).focus()
+
+press_enter_key = (event)->
+  event.keyCode == 13
 

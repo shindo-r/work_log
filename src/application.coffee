@@ -4,6 +4,21 @@ class WorkLog extends Spine.Model
   @configure "WorkLog", "task", "hour"
   @extend Spine.Model.Local
 
+  constructor: ->
+    super
+    @bind("beforeSave", @before_save)
+
+  before_save: ->
+    @hour = parseFloat(@hour)
+
+  validate: ->
+    @errors = []
+    @errors.push("Task is required") unless @task
+    @errors.push("Hour is required") unless @hour
+    @errors.push("Hour should be float value") if @hour and !isFloat(@hour)
+    !Spine.isBlank(@errors)
+
+
 class Item extends Spine.Controller
   events:
     "click .destroy": "remove"
@@ -25,6 +40,7 @@ class WorkLogApp extends Spine.Controller
 
   elements:
     ".items":     "items" #こうしておくと@itemsで参照可
+    ".errors":    "error_messages"
     "form#entry_log": "form"
 
   constructor: ->
@@ -43,8 +59,12 @@ class WorkLogApp extends Spine.Controller
   create: (e) -> #eはjavascriptのイベントオブジェクト
     if press_enter_key(e)
       e.preventDefault() #submitをキャンセル
-      WorkLog.fromForm(@form).save()
-      clear(@form)
+      @error_messages.empty()
+      worklog = WorkLog.fromForm(@form)
+      if worklog.save()
+        clear(@form)
+      else
+        @error_messages.append("<li>#{error}</li>") for error in worklog.errors
 
 $ -> #JQueryの構文 ページのドムを構築後に、関数を実行する
   new WorkLogApp(el: "#work_logs") #elをしているする事でそこのDOMを操作できる(?)
@@ -59,3 +79,4 @@ clear = (form)->
 press_enter_key = (event)->
   event.keyCode == 13
 
+isFloat = (val)-> parseFloat(val)

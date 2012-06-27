@@ -1,8 +1,9 @@
-$ = jQuery
-
 class WorkLog extends Spine.Model
   @configure "WorkLog", "task", "hour"
   @extend Spine.Model.Local
+
+  @tasks: ->
+    unique($.map(@all(), (work_log, i)-> work_log.task))
 
   constructor: ->
     super
@@ -37,11 +38,13 @@ class Item extends Spine.Controller
 class WorkLogApp extends Spine.Controller
   events:
     "keypress form input":   "create"
+    "focus form input[name='task']": "load_suggest"
 
   elements:
     ".items":     "items" #こうしておくと@itemsで参照可
     ".errors":    "error_messages"
     "form#entry_log": "form"
+    "input[name='task']": "task_field"
 
   constructor: ->
     super
@@ -66,6 +69,9 @@ class WorkLogApp extends Spine.Controller
       else
         @error_messages.append("<li>#{error}</li>") for error in worklog.errors
 
+  load_suggest: (e) ->
+    @task_field.autocomplete({ source: WorkLog.tasks()})
+
 $ -> #JQueryの構文 ページのドムを構築後に、関数を実行する
   new WorkLogApp(el: "#work_logs") #elをしているする事でそこのDOMを操作できる(?)
 
@@ -80,3 +86,17 @@ press_enter_key = (event)->
   event.keyCode == 13
 
 isFloat = (val)-> parseFloat(val)
+
+unique = (array) ->
+  storage = {}
+  uniqueArray = []
+  i = undefined
+  value = undefined
+  i = 0
+  while i < array.length
+    value = array[i]
+    unless value of storage
+      storage[value] = true
+      uniqueArray.push value
+    i++
+  uniqueArray

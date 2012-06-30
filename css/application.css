@@ -100,4 +100,15 @@ body {
   top: 16px;
 }
 
-
+#work_logs ul.date_list {
+  list-style-type: none;
+}
+#work_logs ul.date_list li{
+  float:left;
+}
+#work_logs ul.date_list li.left{
+  padding-right:10em;
+}
+#work_logs ul.date_list li.middle{
+  padding-right:10em;
+}

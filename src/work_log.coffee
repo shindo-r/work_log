@@ -6,9 +6,6 @@ class WorkLog extends Spine.Model
     unique($.map(@all(), (work_log, i)-> work_log.task))
 
   @by_date: (date)->
-    @select (work_log) ->
-      work_log.date == date
-
     @findAllByAttribute("date", date)
 
   constructor: ->
@@ -24,18 +21,4 @@ class WorkLog extends Spine.Model
     @errors.push("Hour is required") unless @hour
     @errors.push("Hour should be number") if @hour and isNaN(@hour)
     !Spine.isBlank(@errors)
-
-unique = (array) ->
-  storage = {}
-  uniqueArray = []
-  i = undefined
-  value = undefined
-  i = 0
-  while i < array.length
-    value = array[i]
-    unless value of storage
-      storage[value] = true
-      uniqueArray.push value
-    i++
-  uniqueArray
 

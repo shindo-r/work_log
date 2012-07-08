@@ -77,12 +77,3 @@ class WorkLogApp extends Spine.Controller
 $ -> #JQueryの構文 ページのドムを構築後に、関数を実行する
   new WorkLogApp(el: "#work_logs") #elをしているする事でそこのDOMを操作できる(?)
 
-# 以下、ユーティリティメソッド
-
-clear = (form)->
-  form.find('input').each -> 
-    $(this).val('')
-  $(form.find('input')[0]).focus()
-
-press_enter_key = (event)->
-  event.keyCode == 13

@@ -2,7 +2,7 @@
 {spawn} = require 'child_process'
 
 build = (callback) ->
-  coffee = spawn 'coffee', ['-c', '-o', 'lib', 'src']
+  coffee = spawn 'coffee', ['-c', '-b', '-o', 'app', 'src']
   coffee.stderr.on 'data', (data) ->
     process.stderr.write data.toString()
   coffee.stdout.on 'data', (data) ->
@@ -10,5 +10,5 @@ build = (callback) ->
   coffee.on 'exit', (code) ->
     callback?() if code is 0
 
-task 'build', 'Build lib/ from src/', ->
+task 'build', 'Build app/ from src/', ->
   build()

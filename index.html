@@ -21,8 +21,9 @@
   <script type="text/x-jquery-tmpl" id="itemTemplate">
     <div class="item">
       <a class="destroy"></a>
-      <span class="task">${task}</span> 
-      <span class="hour">(${hour})</span>
+      <span class="from_to">${from} - ${to}</span>
+      <span class="time">(${time})</span>
+      <span class="task"> ${task} </span> 
     </div>
   </script>
 </head>
@@ -40,8 +41,9 @@
       <div class="errors"></div>
 
       <form id="entry_log">
-        <input name="task" type="text" placeholder="Input task name">
-        <input name="hour" type="text" placeholder="Input hour.">
+        <input class="time_input"name="from" type="text" placeholder="From (ex.14:15)">
+        <input class="time_input" name="to" type="text" placeholder="To (ex.14:15)">
+        <input name="task" type="text" placeholder="Task Name">
       </form>
       
       <div class="items"></div>

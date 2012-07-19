@@ -37,6 +37,7 @@ class WorkLogApp extends Spine.Controller
     @refresh_date_element_by(@selected_date)
     WorkLog.bind("save",  @addOne) #Task.createが実行された時に、addOneを呼ぶ。
     WorkLog.bind("refresh", @addAll) #refeshはfetchのタイミングで呼ばれる。詳しくはlocal.coffeeを見よ
+    WorkLog.bind("refresh save", @draw_graph) 
     WorkLog.fetch() #データをローカルストレージからロードしている。詳しくはlocal.coffeeを見よ
   
   addOne: (work_log) =>
@@ -73,7 +74,28 @@ class WorkLogApp extends Spine.Controller
     @previews_date[0].innerText = date.clone().add('days', -1).format(DISPLAY_FORMAT)
     @next_date[0].innerText = date.clone().add('days', 1).format(DISPLAY_FORMAT)
 
+  draw_graph: =>
+    work_logs = WorkLog.by_date(@selected_date.format(STORE_FORMAT))
+    if work_logs.length > 0
+      data = []
+      data.push([work_log.task, work_log.time]) for work_log in work_logs
+      myChart = new JSChart("graph", "pie")
+      myChart.setDataArray data
+      myChart.setTitle '　' 
+      myChart.setTitleColor '#8E8E8E'
+      myChart.setTitleFontSize 11
+      myChart.setTextPaddingTop 30
+      myChart.setSize 616, 321
+      myChart.setPiePosition 240, 120
+      myChart.setPieRadius 85
+      myChart.setPieUnitsColor "#555"
+      myChart.draw()
+
+
+
 
 $ -> #JQueryの構文 ページのドムを構築後に、関数を実行する
   new WorkLogApp(el: "#work_logs") #elをしているする事でそこのDOMを操作できる(?)
+
+
 

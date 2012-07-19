@@ -12,6 +12,11 @@ unique = (array) ->
     i++
   uniqueArray
 
+sum = (array) ->
+  total = 0
+  total += value for value in array
+  total
+
 clear = (form)->
   form.find('input').each -> 
     $(this).val('')

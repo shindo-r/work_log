@@ -1,9 +1,15 @@
 CACHE MANIFEST
-./lib/application.js
-./lib/jquery.js
-./lib/jquery.tmpl.js
-./lib/json2.js
-./lib/spine.js
-./lib/spine.local.js
 ./css/application.css
+./css/jquery-ui-1.8.21.custom.css
 ./images/destroy.png
+./lib/json2.js
+./lib/jquery-1.7.2.min.js
+./lib/jquery.tmpl.js
+./lib/jquery-ui-1.8.21.custom.min.js
+./lib/moment.js
+./lib/jscharts.js
+./app/spine.js
+./app/local.js
+./app/util.js
+./app/work_log.js
+./app/application.js

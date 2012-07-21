@@ -1,0 +1,13 @@
+{
+    "name": "work_log"
+  , "version": "0.0.1"
+  , "private": true
+  , "dependencies": {
+      "express": "2.5.x"
+    , "coffee-script": ">= 0.0.1"
+    , "ejs": "0.7.x"
+  }
+  , "engines" : {
+    "node": "0.8.x"
+  }
+}

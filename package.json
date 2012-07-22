@@ -6,8 +6,13 @@
       "express": "2.5.x"
     , "coffee-script": ">= 0.0.1"
     , "ejs": "0.7.x"
+    , "assert": "latest"
   }
   , "engines" : {
     "node": "0.8.x"
+  },
+  "dependencies": {
+    "cucumber": "latest"
+  , "zombie":   "latest"
   }
 }

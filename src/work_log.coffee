@@ -4,6 +4,15 @@ class WorkLog extends Spine.Model
   @configure "WorkLog", "task", "from", "to", "time", "date"
   @extend Spine.Model.Local
 
+  validations:
+    "'Task' is required": -> not @task
+    "'From' is required": -> not @from
+    "'To' is required":   -> not @to
+    "'From' should need a format like '14:30'" : -> not @from.match TIME_MATCHER if @from 
+    "'To' should need a format like '14:30'" : -> not @to.match TIME_MATCHER if @to 
+    "'From' should be smaller than 'To'": -> 
+      @is_from_bigger_than_to() if @from and @to and @from.match(TIME_MATCHER) and @to.match(TIME_MATCHER)
+
   @tasks: ->
     unique($.map(@all(), (work_log, i)-> work_log.task))
 
@@ -14,12 +23,6 @@ class WorkLog extends Spine.Model
     super
     @bind("beforeSave", @calc_time)
 
-  validate: ->
-    @errors = []
-    @errors.push("Task is required") unless @task
-    unless ( [@from, @to].every (time) -> time.match TIME_MATCHER )
-      @errors.push("From and To should need a format like '14:30'") 
-    !Spine.isBlank(@errors)
 
   calc_time: ->
     hour = @hour_of(@to) - @hour_of(@from)
@@ -29,4 +32,7 @@ class WorkLog extends Spine.Model
 
   hour_of: (time)-> time.match(TIME_MATCHER)[1]
   minute_of: (time)-> time.match(TIME_MATCHER)[2]
+  is_from_bigger_than_to: ->
+    ( @hour_of(@to) < @hour_of(@from) ) or 
+      ( @hour_of(@to) == @hour_of(@from) and @minute_of(@to) <= @minute_of(@from) )
 

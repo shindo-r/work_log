@@ -1,8 +1,7 @@
 HAML_TEMP = '''
   %div.prev_date
     prev
-  %div.selected_date
-    = selected_date.format("MM/DD")
+  = selected_date.format("MM/DD")
   %div.next_date
     next
   %div#calendar-container

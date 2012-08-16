@@ -1,3 +1,6 @@
+
+http://shindo-r.github.com/work_log/
+
 #Usage
 
 1. run 'cake build'

@@ -8,7 +8,7 @@ class TotalView extends Spine.Controller
  
   constructor: ->
     super
-    WorkLog.bind("save",  @refresh)
+    WorkLog.bind("refresh save destroy",  @refresh)
 
   refresh: =>
     @refresh_by @target_date
@@ -25,7 +25,7 @@ class TotalView extends Spine.Controller
 
     @items.empty()
     @items.append("<li>#{task} : #{total_time}</li>") for task, total_time of total_time_of_each_task
-    @items.append("<li>total : #{total_time_of_all_task}</li>")
+    @items.append("<li><b>TOTAL</b> : #{total_time_of_all_task}</li>")
 
 
   remove: =>

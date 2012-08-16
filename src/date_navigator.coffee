@@ -19,7 +19,7 @@ class DateNavigator extends Spine.Controller
     view_template = Haml(HAML_TEMP)
     @html(view_template(selected_date:@selected_date))
     @calendar = @setup_calendar()
-    @trigger('update')
+    @trigger 'update', @selected_date
 
   next_date: ->
     @selected_date.add('days', +1)
@@ -46,6 +46,5 @@ class DateNavigator extends Spine.Controller
 
 
 
-$ -> new DateNavigator(el: "#date_navigator").render()
 
 

@@ -22,7 +22,7 @@ class WorkLogItemList extends Spine.Controller
   refresh_by: (target_date)->
     @target_date = target_date
     @items.empty()
-    addAll()
+    @addAll()
     
   addOne: (work_log) =>
     view = new Item(instance: work_log)
@@ -45,8 +45,6 @@ class WorkLogItemList extends Spine.Controller
   load_suggest: (e) ->
     @task_field.autocomplete({ source: WorkLog.tasks()})
 
-
-$ -> new WorkLogItemList(el: "#work_log_item_list") 
 
 
 

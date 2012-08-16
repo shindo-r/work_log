@@ -10,8 +10,11 @@ class TotalView extends Spine.Controller
     super
     WorkLog.bind("save",  @refresh)
 
-  refresh: (target_date)->
-    @target_date = target_date if target_date
+  refresh: =>
+    @refresh_by @target_date
+
+  refresh_by: (target_date)->
+    @target_date = target_date
 
     total_time_of_each_task = {}
     total_time_of_all_task = 0
@@ -28,6 +31,5 @@ class TotalView extends Spine.Controller
   remove: =>
     @instance.destroy()
 
-$ -> new TotalView(el: "#total_view").refresh()
 
 

@@ -7,38 +7,30 @@ body {
   font-family: "Helvetica Neue", helvetica, arial, sans-serif;
   font-size: 14px;
   line-height: 1.4em;
-  background: #eeeeee;
+  background: white;
   color: #333333;
 }
 
 #views {
-  width: 520px;
   margin: 0 auto 40px auto;
-  background: white;
-  
-  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
-  
-  -moz-border-radius: 0 0 5px 5px;
-  -o-border-radius: 0 0 5px 5px;
-  -webkit-border-radius: 0 0 5px 5px;
-  border-radius: 0 0 5px 5px;
 }
 
-#work_logs {
-  padding: 20px;
+
+#views ul.structure {
+  list-style-type: none;
+}
+#views ul.structure li{
+  float:left;
+}
+#views ul.structure li.left_contents{
+  padding-right:5em;
+}
+#views ul.structure li.middle_contents{
+  padding-right:5em;
 }
 
-#work_logs h1 {
-  font-size: 36px;
-  font-weight: bold;
-  text-align: center;
-  padding: 0 0 10px 0;
-}
 
-#work_logs input[type="text"] {
+#work_log_item_list input[type="text"] {
   font-size: 12px;
   font-family: inherit;
   line-height: 1.4em;
@@ -52,35 +44,35 @@ body {
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
 }
 
-#work_logs input.time_input {
+#work_log_item_list input.time_input {
   width: 90px;
 }
-#work_logs input[name="task"] {
+#work_log_item_list input[name="task"] {
   width: 280px;
 }
 
-#work_logs input::-webkit-input-placeholder {
+#work_log_item_list input::-webkit-input-placeholder {
   font-style: italic;
 }
 
-#work_logs .errors {
+#work_log_item_list .errors {
   font-style: italic;
   color: red;
 }
 
-#work_logs .items {
+#work_log_item_list .items {
   margin: 10px 0;
   list-style: none;
 }
 
-#work_logs .item {
+#work_log_item_list .item {
   padding: 15px 20px 5px 0;
   position: relative;
   font-size: 15px;
   border-bottom: 1px solid #cccccc;
 }
 
-#work_logs .item .destroy {
+#work_log_item_list .item .destroy {
   position: absolute;
   right: 10px;
   top: 16px;
@@ -91,26 +83,39 @@ body {
   background: url(../images/destroy.png) no-repeat center center;
 }
 
-#work_logs .item:hover .destroy {
+#work_log_item_list .item:hover .destroy {
   display: block;
 }
 
-#work_logs .item span.hour {
+#work_log_item_list .item span.hour {
   position: absolute;
   right: 100px;
   top: 16px;
 }
 
-#work_logs ul.date_list {
+#date_navigator ul.date_list {
   list-style-type: none;
 }
-#work_logs ul.date_list li{
+#date_navigator ul.date_list li{
   float:left;
 }
-#work_logs ul.date_list li.left{
-  padding-right:10em;
+#date_navigator ul.date_list li.left{
+  padding-right:1em;
 }
-#work_logs ul.date_list li.middle{
-  padding-right:10em;
+#date_navigator ul.date_list li.middle{
+  padding-right:1em;
+}
+
+#total_view ul.items {
+  margin: 10px 0;
+  list-style: none;
+}
+
+#total_view ul.items li {
+  float:none;
+  padding: 15px 20px 5px 0;
+  position: relative;
+  font-size: 15px;
+  border-bottom: 1px solid #cccccc;
 }
 

@@ -43,24 +43,29 @@
   <div id="views">
     <h1>Work Log</h1>
     <hr/>
-    <h3>Navi</h3>
-    <div id="date_navigator"></div>
-    <hr/>
-    <h3>List</h3>
-    <div id="work_log_item_list">
-      <div class="errors"></div>
-      <form id="entry_log">
-        <input class="time_input"name="from" type="text" placeholder="From (ex.14:15)">
-        <input class="time_input" name="to" type="text" placeholder="To (ex.14:15)">
-        <input name="task" type="text" placeholder="Task Name">
-      </form>
-      <div class="items"></div>
-    </div>
-    <hr/>
-    <h3>Total</h3>
-    <div id="total_view">
-      <ul class="items"></ul>
-    </div>
+    <ul class="structure">
+      <li class="left_contents">
+        <h3>Navi</h3>
+        <div id="date_navigator"></div>
+      </li>
+      <li class="middle_contents">
+        <h3>List</h3>
+        <div id="work_log_item_list">
+          <div class="errors"></div>
+          <form id="entry_log">
+            <input class="time_input"name="from" type="text" placeholder="From (ex.14:15)">
+            <input class="time_input" name="to" type="text" placeholder="To (ex.14:15)">
+            <input name="task" type="text" placeholder="Task Name">
+          </form>
+          <div class="items"></div>
+        </div>
+      </li>
+      <li class="right_contents">
+        <h3>Total</h3>
+        <div id="total_view">
+          <ul class="items"></ul>
+        </div>
+      </li>
   </div>
 </body>
 </html>

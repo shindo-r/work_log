@@ -1,9 +1,13 @@
 HAML_TEMP = '''
-  %div.prev_date
-    prev
-  = selected_date.format("MM/DD")
-  %div.next_date
-    next
+  %ul.date_list
+    %li.left
+      %a.prev_date{ href:"#" }
+        prev
+    %li.middle
+      = selected_date.format("MM/DD")
+    %li.right
+      %a.next_date{ href: "#" }
+        next
   %div#calendar-container
 '''
 

@@ -1,0 +1,105 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4em;
+  background: #fff;
+  color: #333;
+}
+#views {
+  margin: 0 auto 40px auto;
+}
+#views ul.structure {
+  list-style-type: none;
+}
+#views ul.structure li {
+  float: left;
+}
+#views ul.structure li.left_contents {
+  padding-right: 5em;
+}
+#views ul.structure li.middle_contents {
+  padding-right: 5em;
+}
+#work_log_item_list input[type="text"] {
+  font-size: 12px;
+  font-family: inherit;
+  line-height: 1.4em;
+  border: 0;
+  outline: none;
+  border: 1px solid #999;
+  -moz-box-shadow: rgba(0,0,0,0.20) 0 1px 2px 0 inset;
+  -webkit-box-shadow: rgba(0,0,0,0.20) 0 1px 2px 0 inset;
+  -o-box-shadow: rgba(0,0,0,0.20) 0 1px 2px 0 inset;
+  -moz-box-shadow: rgba(0,0,0,0.20) 0 1px 2px 0 inset;
+  -webkit-box-shadow: rgba(0,0,0,0.20) 0 1px 2px 0 inset;
+  box-shadow: rgba(0,0,0,0.20) 0 1px 2px 0 inset;
+}
+#work_log_item_list input.time_input {
+  width: 90px;
+}
+#work_log_item_list input[name="task"] {
+  width: 280px;
+}
+#work_log_item_list input::-webkit-input-placeholder {
+  font-style: italic;
+}
+#work_log_item_list .errors {
+  font-style: italic;
+  color: #f00;
+}
+#work_log_item_list .items {
+  margin: 10px 0;
+  list-style: none;
+}
+#work_log_item_list .item {
+  padding: 15px 20px 5px 0;
+  position: relative;
+  font-size: 15px;
+  border-bottom: 1px solid #ccc;
+}
+#work_log_item_list .item .destroy {
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  display: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background: url("../images/destroy.png") no-repeat center center;
+}
+#work_log_item_list .item:hover .destroy {
+  display: block;
+}
+#work_log_item_list .item span.hour {
+  position: absolute;
+  right: 100px;
+  top: 16px;
+}
+#date_navigator ul.date_list {
+  list-style-type: none;
+}
+#date_navigator ul.date_list li {
+  float: left;
+}
+#date_navigator ul.date_list li.left {
+  padding-right: 1em;
+}
+#date_navigator ul.date_list li.middle {
+  padding-right: 1em;
+}
+#total_view ul.items {
+  margin: 10px 0;
+  list-style: none;
+}
+#total_view ul.items li {
+  float: none;
+  padding: 15px 20px 5px 0;
+  position: relative;
+  font-size: 15px;
+  border-bottom: 1px solid #ccc;
+}

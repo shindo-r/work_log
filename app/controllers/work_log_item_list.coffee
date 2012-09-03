@@ -45,7 +45,7 @@ class WorkLogItemList extends Spine.Controller
       if worklog.save()
         Util.clear(@form)
       else
-        @error_messages.append("<li>#{error}</li>") for error in worklog.errors
+        @error_messages.append("<li>#{error}</li></br>") for error in worklog.errors
 
   load_suggest: (e) ->
     @task_field.autocomplete({ source: WorkLog.tasks()})

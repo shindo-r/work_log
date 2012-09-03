@@ -1,3 +1,5 @@
+require('lib/spine_ext')
+
 Spine = require('spine')
 Util = require('lib/util')
 

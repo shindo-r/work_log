@@ -1,5 +1,9 @@
+require('lib/spine_ext')
+
 Spine = require('spine')
+Spine.Model.Local = require('spine/lib/local')
 Util = require('lib/util')
+$ = require('jqueryify') unless $
 
 TIME_MATCHER = "([0-9]{2}):([0-9]{2})"
 
@@ -11,6 +15,7 @@ class WorkLog extends Spine.Model
     "'Task' is required": -> not @task
     "'From' is required": -> not @from
     "'To' is required":   -> not @to
+    "'Date' is required": -> not @date
     "'From' should need a format like '14:30'" : -> not @from.match TIME_MATCHER if @from 
     "'To' should need a format like '14:30'" : -> not @to.match TIME_MATCHER if @to 
     "'From' should be smaller than 'To'": -> 
@@ -30,7 +35,9 @@ class WorkLog extends Spine.Model
   calc_time: ->
     hour = @hour_of(@to) - @hour_of(@from)
     minute = @minute_of(@to) - @minute_of(@from)
-    minute = 60 + minute if minute < 0
+    if minute < 0
+      minute = 60 + minute
+      hour = hour - 1
     @time = hour + (minute/60)
 
   hour_of: (time)-> time.match(TIME_MATCHER)[1]

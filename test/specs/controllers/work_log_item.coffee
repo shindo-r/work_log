@@ -1,7 +1,7 @@
 require = window.require
 
 describe 'WorkLogItem', ->
-  WorkLogItem = require('controllers/worklogitem')
+  WorkLogItem = require('controllers/work_log_item')
   
   it 'can noop', ->
     
